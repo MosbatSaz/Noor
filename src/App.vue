@@ -1,10 +1,12 @@
 <template>
-  <v-app>
+  <v-app dark>
 
     <navi></navi>
-    hey man what up
+
     <v-content class="pa-0">
-      <router-view></router-view>
+      
+            <router-view></router-view>
+
     </v-content>
                 
   </v-app>
@@ -25,52 +27,103 @@ export default {
 </script>
 <style>
 
-/* use sass in this section to make everything smarter */
 
+/* @font-face {
+  font-family: 'BYekan';
+  src: url('./css/Font/BYekan.svg#BYekan') format('svg'),
+       url('./css/Font/BYekan.ttf') format('truetype'),
+       url('./css/Font/BYekan.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Yekan';
+  src: url('./css/Font/Yekan.eot');
+  src: url('./css/Font/Yekan.eot?#iefix') format('embedded-opentype'),
+       url('./css/Font/Yekan.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+
+/* use sass in this section to make everything smarter */
+.rtl{
+  direction: rtl;
+}
+.ltr{
+  direction: ltr;
+}
 /* opacity */
-@import url('https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap');
+
+/* @import url("./css/Font/font.css"); */
 /* font */
 .v-application {
    /* font-family: 'Lexend Deca', sans-serif; */
+    /* font-family: 'Yekan', sans-serif; */
+ }
+
+  body {
+   /* font-family: 'Yekan'; */
  }
 
 
-.op100{opacity: 1}
-.op90{opacity: 0.9}
-.op80{opacity: 0.8}
-.op70{opacity: 0.7}
-.op60{opacity: 0.6}
-.op50{opacity: 0.5}
-.op40{opacity: 0.4}
-.op30{opacity: 0.3}
-.op20{opacity: 0.2}
-.op10{opacity: 0.1}
-.op0{opacity: 0}
+a{
+  text-decoration: transparent;
+}
+
+
+.op100{opacity: 1 !important}
+.op95{opacity: 0.95}
+.op90{opacity: 0.90}
+
 
 /* height  */
+.h100v{ height: 100vh}
 .h100{height: 100%}
-.minh700{min-height:700}
 .h90{height: 90%}
 .h80{height: 80%}
-.h70{height: 70%}
-.h60{height: 60%}
-.h50{height: 50%}
-.h40{height: 40%}
-.h30{height: 30%}
-.h20{height: 20%}
-.h10{height: 10%}
+
 
 /* width */
 .w100{width: 100%}
 .w90{width: 90%}
 .w80{width: 80%}
-.w70{width: 70%}
-.w60{width: 60%}
-.w50{width: 50%}
-.w40{width: 40%}
-.w30{width: 30%}
-.w20{width: 20%}
-.w10{width: 10%}
+
+
+
+::-webkit-scrollbar{
+  width: 15px;
+}
+
+::-webkit-scrollbar-track{
+  background: #f2f1f0;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: rgb(16, 7, 53);
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: rgb(255, 1, 119);
+}
+
+
+
+/* animation */
+
+
+.float-illus{ animation: float-illus infinite 5s ease-in-out }
+@keyframes float-illus {
+    50% { transform: translateY(-5px) }
+}
+
+.float-illus-reverse{ animation: float-reverse infinite 5s ease-in-out }
+@keyframes float-reverse {
+    50% { transform: translateY(+5px) }
+}
 
 
 </style>

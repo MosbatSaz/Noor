@@ -1,6 +1,6 @@
 <template>
 
-    <v-container fluid  min-height="800" class="pa-0 ma-0 blue darken-4 h80 minh700">
+    <v-container fluid  min-height="800" class="pa-0 ma-0 indigo darken-3 h80 minh700">
 
         <v-row 
         no-gutters
@@ -11,7 +11,7 @@
             <!-- finger-print -->
             <v-col 
             cols="12"
-            class="pa-0 ma-0 mt-10"
+            class="pa-0 ma-0"
             >   
                 <div 
                 class="d-flex justify-center">
@@ -23,15 +23,12 @@
                     >
                     </v-avatar>  
                 </div>
-            </v-col>
-
-            <!-- block spacer -->
-            <v-col 
-            cols="12"
-            class="ma-0 mb-8 pa-0">
+ 
+                <!-- block spacer -->
                 <div
-                class="d-flex justify-center w100">
+                class="d-flex justify-center w100 my-6">
                     <v-card
+                    
                     class="h100 white--text"
                     width="200"
                     flat
@@ -42,83 +39,76 @@
                     </v-responsive>
                     </v-card>
                 </div>
-    
-            </v-col>
 
-            <!--input fields -->
-            <v-col 
-            cols="12"
-            class="ma-0 mt-n12 pa-0 ">
+                 <!--input fields -->
                 <div
-                class="d-flex justify-center mb-6">
-                <v-card
-                flat
-                width="300"
-                height="50"
-                class="">
-                    <v-text-field
-                    height="50"
-                    solo>
-
-                    </v-text-field>
-                </v-card>
-                </div>
-                <div
-                class="d-flex justify-center mb-6">
-                <v-card
-                flat
-                width="300"
-                height="50"
-                class="">
-                    <v-text-field
-                    height="50"
-                    solo>
-
-                    </v-text-field>
-                </v-card>
-                </div>
-                <div
+                v-for="(input, index) in inputs" :key="index"
                 class="d-flex justify-center">
+
+                    <v-text-field
+                    dense
+                    :label="input.label"
+                    solo
+                    class="mx-5 hidden-sm-and-up"
+                    >
+                    </v-text-field>
+
+                    <v-text-field
+                    :label="input.label"
+                    solo
+                    reverse
+                    flat
+                    background-color="white"
+                    class="mx-8 hidden-xs-only gray--text"
+                    >
+                    </v-text-field>
+
+                </div>
+
+
+                <!-- sign up -->
+                <div
+                class="d-flex justify-center ma-0 mt-6 pa-0">
                     <v-btn
-                    class="blue"
+                    class="pink lighten-1 white--text headline text-capitalize"
                     width="300"
+
                     height="50">
-                    
+                    sign In
                     </v-btn>
                 </div> 
-            </v-col>
+
+                <!-- divider -->
+                <div
+                class="d-flex justify-center ma-0 mt-6 pa-0">
+                <v-divider  class="white my-5 mx-5"></v-divider>
+                </div>
+   
 
 
 
             <!-- forget password -->
-            <v-col 
-            cols="12"
-            class="ma-0 my-n10  pa-0" >
-                <div class="text-center">
-                    Forget Password?
-                </div>   
-            </v-col>
 
-            <!-- sign in with google -->
-            <v-col cols="12">
             <div
-            class="d-flex justify-center">
-                <v-card
-                width="300">
-                    <v-responsive
-                    :aspect-ratio="16/5">
-                        
-                    </v-responsive>
-                </v-card>
-            </div>
-            
-                    
-            </v-col>    
-
+                class="d-flex justify-center ma-0  pa-0">
+                    <v-card
+                    flat
+                    class="transparent text-center text-capitalize subtitle-1 "
+                    width="300"
+                    height="50">
+                    <v-btn
+                    @click="ToggleToSignUp()"
+                    color="white"
+                    class="font-weight-light"
+                    text>
+                    Forget PassWord?
+                    </v-btn>    
+                    </v-card>
+                </div> 
+       
             <!-- block spacer -->
-            <v-col 
-            cols="12"
-            class="ma-0 mt-n3 mb-2 pa-0">
+          
+        
                 <div
                 class="d-flex justify-center w100">
                     <v-card
@@ -133,20 +123,24 @@
                     </v-card>
                 </div>
     
-            </v-col>
+ 
 
             <!-- create a new account -->
-            <v-col 
-            cols="12"
-            class="ma-0 my-n12 pa-0 ">
-                <div
-                class="d-flex justify-center">
-                    <v-btn
-                    class="green accent-4"
+
+                 <div
+                class="d-flex justify-center ma-0 mt-6 pa-0">
+                    <v-card
+                    flat
+                    class="transparent text-center text-capitalize subtitle-1 font-weight-lihgt"
                     width="300"
                     height="50">
-                    
-                    </v-btn>
+                    <v-btn
+                    @click="ToggleToSignUp()"
+                    color="green accent-3"
+                    outlined>
+                    Create a new account
+                    </v-btn>    
+                    </v-card>
                 </div>    
             </v-col>  
 
@@ -158,8 +152,24 @@
 </template>
 
 <script>
+
 export default {
-    
+
+    data : () => ({
+
+           inputs:[
+                {label:'Full Name',require:true},
+                {label:'Password',require:true},
+            ],
+    }),
+
+    methods:{
+        ToggleToSignUp(){
+            this.$emit('Toggle',1)
+        },
+    }
+
+ 
 }
 </script>
 <style scoped>
